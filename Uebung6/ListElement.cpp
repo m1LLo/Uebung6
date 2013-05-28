@@ -17,6 +17,6 @@ ListElement::ListElement(InhaltTyp inhalt, ListElement* previous,
 
 ListElement::~ListElement()
 {
-	// TODO Auto-generated destructor stub
+	// Standard Destructor
 }
 

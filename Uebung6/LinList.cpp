@@ -21,6 +21,7 @@ LinList::~LinList()
 
 void LinList::push_back(InhaltTyp t)
 {
+
 }
 
 void LinList::push_front(InhaltTyp t)

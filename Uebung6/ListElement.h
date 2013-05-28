@@ -21,6 +21,7 @@ typedef string InhaltTyp;
 class ListElement
 {
 public:
+
 	/**
 	 * Erstellt eine Objekt vom Typ ListElement.
 	 *
