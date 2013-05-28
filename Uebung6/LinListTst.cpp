@@ -9,12 +9,12 @@ using namespace std;
 
 #include "LinList.h"
 
-int main() {
+int main()
+{
+	//Erstellt Objekt
 	LinList liste1;
 	liste1.push_back("alpha");
 	liste1.push_back("beta");
 	cout << liste1 << endl;
 }
-
-
 
