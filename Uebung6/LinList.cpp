@@ -22,11 +22,30 @@ LinList::~LinList()
 //Fuegt Element hinten an.
 void LinList::push_back(InhaltTyp t)
 {
-	//Pointer der auf ein Listenelement zeigt
 	ListElement *reservierterSpeicher;
 
-	reservierterSpeicher = new ListElement(t,0,0);
+	if (this->size == 0)
+	{
+		//Erstes Element erstellen mit Inhalt t. previous = 0 & next = 0.
+		reservierterSpeicher = new ListElement(t, 0, 0);
 
+		//Pointer auf das erste Element und das letzte Element zeigen auf das
+		//gleiche Element
+		this->first = reservierterSpeicher;
+		this->last = reservierterSpeicher;
+
+		//Die Anzahl der Knoten wird um eins erhoeht.
+		++(this->size);
+	}
+
+	else
+	{
+		//Da hinten angehongen wird ist das voherige Element das last aus
+		//LinList und das next zeigt auf NULL.
+		reservierterSpeicher = new ListElement(t, this->last, 0);
+
+	}
+//Pointer der auf ein Listenelement zeigt
 
 }
 
