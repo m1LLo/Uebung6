@@ -53,7 +53,7 @@ public:
 	 */
 	void pop_front();
 
-	friend ostream& operator<<(ostream&, const LinList&);
+	//friend ostream& operator<<(ostream&, const LinList&);
 
 private:
 

@@ -16,11 +16,17 @@ LinList::LinList()
 
 LinList::~LinList()
 {
-	// TODO Auto-generated destructor stub
+	//Komplette Liste Loeschen
 }
 
+//Fuegt Element hinten an.
 void LinList::push_back(InhaltTyp t)
 {
+	//Pointer der auf ein Listenelement zeigt
+	ListElement *reservierterSpeicher;
+
+	reservierterSpeicher = new ListElement(t,this->last,0);
+
 
 }
 

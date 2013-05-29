@@ -1,12 +1,15 @@
 /**
- * TODO
+ * Klasse verwaltet die Kommunikation zwischen Benutzer und einer
+ * "Verketteten Liste". Enthaelt Methoden die:
+ *  - GUI Ausgeben
+ *  - Benutzereingaben einliest
  *	
- * @file:		UserDialog.cpp
+ * @file:		TestDialog.cpp
  * @date: 		28.05.2013
  * @author:	 	Markus Leitz (3543994)
  */
 
-#include "UserDialog.h"
+#include "TestDialog.h"
 
 void UserDialog::hauptMenueAusgeben()
 {
@@ -55,7 +58,6 @@ void UserDialog::hauptMenueAusgeben()
 	{
 		break;
 	}
-
 	case ProgrammBeenden:
 	{
 		break;

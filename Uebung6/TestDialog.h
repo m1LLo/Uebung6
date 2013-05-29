@@ -1,7 +1,8 @@
 /**
- * TODO
+ * Einfach Klasse die verschiedenen Testaufgaben zum Testen der Klassen LinList
+ * und ListElement enthaelt.
  *	
- * @file:		UserDialog.h
+ * @file:		TestDialog.h
  * @date: 		28.05.2013
  * @author:	 	Markus Leitz (3543994)
  */
@@ -14,12 +15,20 @@ using namespace std;
 
 enum benutzerAuswahl
 {
+	ElementVornAnhaengen,
+	ElementHintenAnhaengen,
+	ElementAnStelleEinfuegen,
+	LetztesElementLoeschen,
+	ErstesElementLoeschen,
+	ElementAnStelleLoeschen,
+	KompletteListeLoeschen,
+	ProgrammBeenden,
 
 };
 
 /**
  * @author Markus Leitz (3543994)
- * @version
+ * @version 1.0
  * @date 28.05.2013
  */
 class UserDialog
