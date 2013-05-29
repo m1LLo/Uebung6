@@ -25,7 +25,7 @@ void LinList::push_back(InhaltTyp t)
 	//Pointer der auf ein Listenelement zeigt
 	ListElement *reservierterSpeicher;
 
-	reservierterSpeicher = new ListElement(t,this->last,0);
+	reservierterSpeicher = new ListElement(t,0,0);
 
 
 }
