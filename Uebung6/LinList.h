@@ -8,6 +8,7 @@
 #ifndef LINLIST_H_
 #define LINLIST_H_
 #include "ListElement.h"
+#include <sstream>
 
 /**
  * Doppelt-verkettete Lineare Liste.
@@ -19,6 +20,10 @@
 class LinList
 {
 public:
+
+	//Klassenkonstannte für Erstes Element
+	static const int ERSTES_ELEMENT;
+
 	/**
 	 * Standard Konstruktor.
 	 */
@@ -45,7 +50,7 @@ public:
 
 	/**
 	 * Methode zum erstellen des ERSTEN Elements.
-	 * Die Anzahl muss auserhalb hochgezaehlt werden.
+	 *
 	 *
 	 * @param t		Inhalt des Elements
 	 */
@@ -78,13 +83,12 @@ public:
 	 */
 	ListElement* findeListenElement(int stelle);
 
+	string toString();
+
 
 	//friend ostream& operator<<(ostream&, const LinList&);
 
 private:
-
-	//Klassenkonstannte für Erstes Element
-	static const int ERSTES_ELEMENT;
 
 	//Speichert die Anzahl an Elementen.
 	size_t size;

@@ -11,68 +11,73 @@
 
 #include "TestDialog.h"
 
-void UserDialog::hauptMenueAusgeben()
+void TestDialog::hauptMenueAusgeben()
 {
-	int benutzerAuswahl = 0;
+	int benutzerAuswahl = 9;
 
-	//Ausgabe Benutzerfuehrung
-	hauptMenueGuiAusgeben();
-
-	//Benutzereingabe
-	cin >> benutzerAuswahl;
-
-	switch (benutzerAuswahl)
+	do
 	{
+		//Ausgabe Benutzerfuehrung
+		hauptMenueGuiAusgeben();
 
-	case ElementVornAnhaengen:
-	{
-		break;
-	}
+		//Benutzereingabe
+		cin >> benutzerAuswahl;
 
-	case ElementHintenAnhaengen:
-	{
-		break;
-	}
+		switch (benutzerAuswahl)
+		{
 
-	case ElementAnStelleEinfuegen:
-	{
-		break;
-	}
+		case ElementVornAnhaengen:
+		{
+			doppeltVerketteteListe.push_front(elementInhaltEinlesen());
+			break;
+		}
 
-	case LetztesElementLoeschen:
-	{
-		break;
-	}
+		case ElementHintenAnhaengen:
+		{
+			break;
+		}
 
-	case ErstesElementLoeschen:
-	{
-		break;
-	}
+		case ElementAnStelleEinfuegen:
+		{
+			break;
+		}
 
-	case ElementAnStelleLoeschen:
-	{
-		break;
-	}
+		case LetztesElementLoeschen:
+		{
+			break;
+		}
 
-	case KompletteListeLoeschen:
-	{
-		break;
-	}
-	case ProgrammBeenden:
-	{
-		break;
-	}
+		case ErstesElementLoeschen:
+		{
+			break;
+		}
 
-	default:
-	{
-		cout << "Falsche Eingabe" << endl;
-		break;
-	}
-	}
+		case ElementAnStelleLoeschen:
+		{
+			break;
+		}
+
+		case KompletteListeLoeschen:
+		{
+			break;
+		}
+		case ProgrammBeenden:
+		{
+			benutzerAuswahl = 0;
+			break;
+		}
+
+		default:
+		{
+			cout << "Falsche Eingabe" << endl;
+			break;
+		}
+		}
+	} while (benutzerAuswahl != 0);
 
 }
 
-void UserDialog::hauptMenueGuiAusgeben()
+void TestDialog::hauptMenueGuiAusgeben()
 {
 	cout << "----------HAUPTMENUE----------" << endl;
 	cout << "ERSTELLEN:" << endl;
@@ -82,9 +87,21 @@ void UserDialog::hauptMenueGuiAusgeben()
 
 	cout << "LOESCHEN:" << endl;
 	cout << "Letztes Element loeschen:       4" << endl;
-	cout << "Erstes Element loeschen: 		 5" << endl;
+	cout << "Erstes Element loeschen:        5" << endl;
 	cout << "An Stelle X Element loeschen:   6" << endl;
-	cout << "Komplette Liste loeschen:		 7" << endl << endl;
+	cout << "Komplette Liste loeschen:       7" << endl << endl;
 
-	cout << "PROGRAMM BEENDEN:        		 0" << endl;
+	cout << "ANZEIGEN:" << endl;
+	cout << "Liste Anzeigen:                 8" << endl << endl;
+
+	cout << "PROGRAMM BEENDEN:               0" << endl;
+}
+
+InhaltTyp TestDialog::elementInhaltEinlesen()
+{
+	InhaltTyp elementInhalt;
+	cout << "Bitte geben Sie denn Inhalt des Elements ein: ";
+	cin >> elementInhalt;
+
+	return elementInhalt;
 }

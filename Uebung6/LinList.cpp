@@ -49,10 +49,9 @@ void LinList::push_back(InhaltTyp t)
 		//hinten angehongen wird
 		this->last = reservierterSpeicher;
 
-	}
+		++(this->size);
 
-	//Die Anzahl der Knoten wird um eins erhoeht.
-	++(this->size);
+	}
 }
 
 void LinList::push_front(InhaltTyp t)
@@ -78,10 +77,10 @@ void LinList::push_front(InhaltTyp t)
 		//Der Pointer auf das erste Element muss veraendert werden da
 		//vorne angehongen wird
 		this->first = reservierterSpeicher;
+
+		++(this->size);
 	}
 
-	//erhoeht die Anzahl
-	++(this->size);
 }
 
 void LinList::pop_back()
@@ -101,6 +100,8 @@ void LinList::push_first(InhaltTyp t)
 	this->first = reservierterSpeicher;
 	this->last = reservierterSpeicher;
 
+	++(this->size);
+
 }
 
 void LinList::insert(int stelle, InhaltTyp t)
@@ -112,27 +113,46 @@ void LinList::insert(int stelle, InhaltTyp t)
 
 	else
 	{
-		if (stelle == ERSTES_ELEMENT)
+		//HIER SOLLTE EIGENTLICH ERSTES_ELEMENT STEHEN ABER DAS MOCHTE DER
+		//COMPILER NICHT
+		if (stelle > 1)
+		{
+			//NICHT SICHER OB NICHT BESSER FEHLERMELDUNG AUSWERFEN WEIL ANZAHL
+			//UEBERSCHRITTEN WURDE
+			if (stelle == ((this->size) + 1))
+			{
+				//hinten anhaengen
+				push_back(t);
+			}
+
+			else
+			{
+				ListElement *neuesElement;
+				ListElement *nachFolgeElement;
+
+				//Ermittelt die Adresse des Elements vor dem eingefuegt werden
+				//soll
+				nachFolgeElement = findeListenElement(stelle);
+
+				//Erstellt das neue Element mit Inhalt, Pointer vom Vorgaenger
+				//des vom Element vor dem eingefuegt werden soll und dem Element
+				//selbt.
+				neuesElement = new ListElement(t, nachFolgeElement->previous,
+						nachFolgeElement);
+
+				//Veraendern der Pointer der Vorhaenger und Nachfolger des neuen
+				//Elements
+				nachFolgeElement->previous = neuesElement;
+				(neuesElement->previous)->next = neuesElement;
+
+				++(this->size);
+			}
+		}
+
+		else
 		{
 			//Vorne anhaengen
 			push_front(t);
-		}
-
-		//NICHT SICHER OB NICHT BESSER FEHLERMELDUNG AUSWERFEN WEIL ANZAHL
-		//UEBERSCHRITTEN WURDE
-		if (stelle == (this->size) + 1)
-		{
-			//hinten anhaengen
-			push_back(t);
-		}
-
-		if (stelle > ERSTES_ELEMENT)
-		{
-			ListElement *reservierterSpeicher;
-			ListElement *previous;
-			ListElement *next;
-
-			reservierterSpeicher = new ListElement(t, previous, next);
 		}
 
 	}
@@ -144,14 +164,49 @@ void LinList::pop_front()
 
 ListElement* LinList::findeListenElement(int stelle)
 {
+	ListElement *zuerstellendesElement;
+	ListElement *pointerAufMomentanesElement;
 
-	//Kontrolle von welcher Seite man schneller an das Element kommt
+	//Kontrolle von welcher Seite man schneller an das Element kommt.
+	//Wenn Stelle in Linker haelfte liegt von links kommen also von first.
 	if (stelle <= (this->size) / 2)
 	{
-		for (int i = 1; i <= stelle; ++i)
+		//Pointer zeigt auf das erste Element
+		ListElement *pointerAufMomentanesElement;
+		pointerAufMomentanesElement = this->first;
+
+		for (int i = 1; i < stelle; ++i)
 		{
-			ListElement *pointerAufMomentanesElement;
+			pointerAufMomentanesElement = pointerAufMomentanesElement->next;
 		}
+
 	}
-	return 0;
+
+	//von rechts kommen also von last
+	else
+	{
+		pointerAufMomentanesElement = this->last;
+		for (int i = 1; i < stelle; ++i)
+		{
+			pointerAufMomentanesElement = pointerAufMomentanesElement->previous;
+		}
+
+	}
+	return pointerAufMomentanesElement;
+}
+
+string LinList::toString()
+{
+	ostringstream o;
+	ListElement *aktuellerPointer;
+	aktuellerPointer = this->first;
+
+	for (int i = 1; i <= (this->size); ++i)
+	{
+		o << i << ". Element" << "\n";
+		o << aktuellerPointer->inhalt << "\n" << "\n";
+	}
+
+	//OVERLOARD MUSS NOCH GEMACHT WERDEN!!!
+	return o.str;
 }

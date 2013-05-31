@@ -11,18 +11,20 @@
 #define USERDIALOG_H_
 
 #include <iostream>
+#include "ListElement.h"
+#include "LinList.h"
 using namespace std;
 
 enum benutzerAuswahl
 {
-	ElementVornAnhaengen,
+	ElementVornAnhaengen = 1,
 	ElementHintenAnhaengen,
 	ElementAnStelleEinfuegen,
 	LetztesElementLoeschen,
 	ErstesElementLoeschen,
 	ElementAnStelleLoeschen,
 	KompletteListeLoeschen,
-	ProgrammBeenden,
+	ProgrammBeenden = 0,
 
 };
 
@@ -31,7 +33,7 @@ enum benutzerAuswahl
  * @version 1.0
  * @date 28.05.2013
  */
-class UserDialog
+class TestDialog
 {
 public:
 
@@ -46,6 +48,14 @@ private:
 	 * Beinhaltet nur das GUI für die Benutzerfuehrung.
 	 */
 	void hauptMenueGuiAusgeben();
+
+	/**
+	 * Liest Inhalt des Elements ein.
+	 * Keine Fehlerueberpruefung da Inhalt nicht definiert ist.
+	 */
+	InhaltTyp elementInhaltEinlesen();
+
+	LinList doppeltVerketteteListe;
 };
 
 #endif /* USERDIALOG_H_ */

@@ -8,12 +8,15 @@
  */
 #include <iostream>
 #include "LinList.h"
+#include "TestDialog.h"
 using namespace std;
 
 
 
 int main()
 {
+	TestDialog dialog;
+	dialog.hauptMenueAusgeben();
 	//Erstellt Objekt
 	LinList liste1;
 
