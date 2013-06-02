@@ -34,11 +34,13 @@ void TestDialog::hauptMenueAusgeben()
 
 		case ElementHintenAnhaengen:
 		{
+			doppeltVerketteteListe.push_back(elementInhaltEinlesen());
 			break;
 		}
 
 		case ElementAnStelleEinfuegen:
 		{
+			doppeltVerketteteListe.insert(2,elementInhaltEinlesen());
 			break;
 		}
 
@@ -59,6 +61,11 @@ void TestDialog::hauptMenueAusgeben()
 
 		case KompletteListeLoeschen:
 		{
+			break;
+		}
+		case ListeAnzeigen:
+		{
+			cout << doppeltVerketteteListe.toString();
 			break;
 		}
 		case ProgrammBeenden:

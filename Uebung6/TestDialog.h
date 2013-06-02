@@ -24,6 +24,7 @@ enum benutzerAuswahl
 	ErstesElementLoeschen,
 	ElementAnStelleLoeschen,
 	KompletteListeLoeschen,
+	ListeAnzeigen,
 	ProgrammBeenden = 0,
 
 };
@@ -54,6 +55,14 @@ private:
 	 * Keine Fehlerueberpruefung da Inhalt nicht definiert ist.
 	 */
 	InhaltTyp elementInhaltEinlesen();
+
+	/**
+	 * Liest die Stelle fuer Einfuegen ein und gibt sie zurueck.
+	 * Laesst nur Integer durch.
+	 *
+	 * @return 		Stelle zum Einfuegen
+	 */
+	int stelleEinlesen();
 
 	LinList doppeltVerketteteListe;
 };

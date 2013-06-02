@@ -195,7 +195,7 @@ ListElement* LinList::findeListenElement(int stelle)
 	return pointerAufMomentanesElement;
 }
 
-string LinList::toString()
+string LinList::toString() const
 {
 	ostringstream o;
 	ListElement *aktuellerPointer;
@@ -205,8 +205,9 @@ string LinList::toString()
 	{
 		o << i << ". Element" << "\n";
 		o << aktuellerPointer->inhalt << "\n" << "\n";
+		aktuellerPointer = aktuellerPointer->next;
 	}
 
-	//OVERLOARD MUSS NOCH GEMACHT WERDEN!!!
-	return o.str;
+
+	return o.str();
 }

@@ -83,7 +83,7 @@ public:
 	 */
 	ListElement* findeListenElement(int stelle);
 
-	string toString();
+	string toString() const;
 
 
 	//friend ostream& operator<<(ostream&, const LinList&);
