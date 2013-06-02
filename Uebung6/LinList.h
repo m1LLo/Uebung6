@@ -75,6 +75,11 @@ public:
 	void pop_front();
 
 	/**
+	 * Loescht alle Elemente der verketteten Liste
+	 */
+	void clean();
+
+	/**
 	 * Hilfe für einfuegen an Stelle und loeschen an Stelle.
 	 * Findet Speicheradresse des gesuchten Elements.
 	 *

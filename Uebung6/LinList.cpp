@@ -83,10 +83,6 @@ void LinList::push_front(InhaltTyp t)
 
 }
 
-void LinList::pop_back()
-{
-}
-
 void LinList::push_first(InhaltTyp t)
 {
 	//Zeiger auf neu anzulegenenden Speicherplatz
@@ -158,8 +154,41 @@ void LinList::insert(int stelle, InhaltTyp t)
 	}
 }
 
+void LinList::pop_back()
+{
+	ListElement *vorletztesElement;
+	vorletztesElement = this->last->previous;
+
+	//Setzt den NextPointer des Vorletzen Elements auf NULL
+	(this->last)->previous->next = 0;
+
+	delete this->last;
+
+}
+
 void LinList::pop_front()
 {
+	ListElement *pointerAufZweitesElement;
+	pointerAufZweitesElement= (this->first)->next;
+
+	delete (this->first);
+
+	//Neues First-Element
+	this->first = pointerAufZweitesElement;
+
+	//Rueckpointer des neuen FirstElements auf NULL setzen.
+	(this->first)->previous = 0;
+}
+
+void LinList::clean()
+{
+	ListElement *aktuelleAusgewaehltesElement;
+	aktuelleAusgewaehltesElement = this->first;
+
+	while (aktuelleAusgewaehltesElement != 0)
+	{
+
+	}
 }
 
 ListElement* LinList::findeListenElement(int stelle)
