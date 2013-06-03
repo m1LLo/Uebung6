@@ -1,11 +1,9 @@
 /**
- * 
+ * Deklaration der Klasse LinList.
+ * Speichert eine Linieare Liste.
  * @file	LinList.cpp
  * @author	folz
  * @date	20.05.2012
- *
- * NOTIZ: DIE POINTER VON DEN VOHER ODER NACHHER ELEMENTEN MUESSEN NOCH
- * UMGESTELLT WERDEN!!!
  */
 
 #include "LinList.h"
@@ -291,18 +289,21 @@ string LinList::toString() const
 	aktuellerPointer = this->first;
 
 	o << endl << "--------LINIEARE LISTE--------" << endl;
+
 	if (this->size == 0)
 	{
-		o << endl << "             LEER             " << endl << endl;
+		o << endl << "             LEER             " << endl;
+		return o.str();
 	}
+
+	o << endl << "START<-->";
 	for (int i = 1; i <= (this->size); ++i)
 	{
-		o << i << ". Element" << "\n";
-		o << aktuellerPointer->inhalt << "\n" << "\n";
+		o << aktuellerPointer->inhalt << "<-->";
 		aktuellerPointer = aktuellerPointer->next;
 	}
-	o << "------------------------------" << endl;
 
+	o << "ENDE" << endl;
 	return o.str();
 }
 
@@ -311,8 +312,32 @@ ostream& operator<<(ostream& o, const LinList& liste)
 	return o << liste.toString();
 }
 
+LinList::LinList(const LinList& zuKopierendeListe)
+{
+	if(zuKopierendeListe.size == 0)
+	{
+		throw LISTE_IST_LEER;
+	}
+
+	LinList neueListe;
+	neueListe.size = zuKopierendeListe.size;
+
+	ListElement *erstesElement;
+	ListElement *erstelltesElement;
+
+	erstesElement = new ListElement(zuKopierendeListe.first->inhalt,0,0);
+	erstelltesElement = erstesElement;
+
+	for (int i = 1; i <= zuKopierendeListe.size; ++i)
+	{
+		erstelltesElement = new (zu)
+	}
+
+}
+
 istream& operator>>(istream& in, LinList& list)
 {
-	list.push_back(in);
+
 	return in;
 }
+

@@ -32,6 +32,13 @@ public:
 	LinList();
 
 	/**
+	 * Kopierkonstruktor erstelle eine tiefe Kopie der Liste.
+	 *
+	 * @param zuKopierendeListe
+	 */
+	LinList(const LinList &zuKopierendeListe);
+
+	/**
 	 * Destructor
 	 */
 	~LinList();

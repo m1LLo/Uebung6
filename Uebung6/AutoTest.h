@@ -10,6 +10,7 @@
 #define AUTOTEST_H_
 
 #include "LinList.h"
+#include <iostream>
 
 /**
  * @author Markus Leitz (3543994)
@@ -18,7 +19,7 @@
  */
 class AutoTest
 {
-private:
+public:
 	AutoTest();
 	~AutoTest();
 };
