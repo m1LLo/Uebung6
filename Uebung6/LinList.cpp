@@ -190,7 +190,7 @@ void LinList::pop_front()
 
 void LinList::erase(int stelle)
 {
-	if (this->size = 0)
+	if (this->size == 0)
 	{
 		throw LISTE_IST_LEER;
 	}
@@ -304,4 +304,9 @@ string LinList::toString() const
 	o << "------------------------------" << endl;
 
 	return o.str();
+}
+
+ostream& operator<<(ostream& o, const LinList& liste)
+{
+	return o << liste.toString();
 }

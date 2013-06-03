@@ -37,6 +37,16 @@ enum benutzerAuswahl
 class TestDialog
 {
 public:
+	/**
+	 * Standard Destruktor.
+	 * Da keine Werte uebergeben werden muessen reicht das!
+	 */
+	TestDialog();
+
+	/**
+	 * Destruktor
+	 */
+	~TestDialog();
 
 	/**
 	 * Gibt das Menue zur Benutzersteuerung aus und liest eine Auswahl ein.
@@ -64,6 +74,7 @@ private:
 	 */
 	int stelleEinlesen();
 
+	//Erstellen einer LinList
 	LinList doppeltVerketteteListe;
 };
 

@@ -11,6 +11,14 @@
 
 #include "TestDialog.h"
 
+TestDialog::TestDialog()
+{
+}
+
+TestDialog::~TestDialog()
+{
+}
+
 void TestDialog::hauptMenueAusgeben()
 {
 	int benutzerAuswahl = 9;

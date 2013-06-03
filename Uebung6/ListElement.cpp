@@ -15,8 +15,30 @@ ListElement::ListElement(InhaltTyp inhalt, ListElement* previous,
 	this->next = next;
 }
 
+ListElement::ListElement(const ListElement& zuKopierenesElement)
+{
+	//Kopiertes Objekt wird hinten angehongen
+	this->inhalt = zuKopierenesElement.inhalt;
+	//this->previous = last;
+	this->next = 0;
+}
+
 ListElement::~ListElement()
 {
+	/*
+	 * Standard Destruktor reicht aus da die Pointer auf Objekte zeigen die nicht
+	 * geloescht werden sollen.
+	 */
 
+}
+
+ListElement &ListElement::operator=(const ListElement &zuWeisendesElement)
+{
+	//Selbst zuweisung verhindern!
+	if(this == &zuWeisendesElement)
+	{
+		return *this;
+	}
+	return *this;
 }
 

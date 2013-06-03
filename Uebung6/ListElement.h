@@ -32,12 +32,28 @@ public:
 	ListElement(InhaltTyp, ListElement* = 0, ListElement* = 0);
 
 	/**
+	 * Kopierkonstruktor kopiert ein uebergebenes Element
+	 *
+	 * @param zuKopierenesElement		ListElement das kopiert werden soll.
+	 */
+	ListElement(const ListElement &zuKopierenesElement);
+
+	/**
 	 * Destructor.
 	 */
 	~ListElement();
 
 	/**
+	 * Zuweisungs-Operator fue ListElement.
+	 *
+	 * @param zuWeisendesElement	Vorlagen Element
+	 * @return
+	 */
+	ListElement &operator=(const ListElement &zuWeisendesElement);
+
+	/**
 	 * LinList ist Freund und darf direkt auf ListElement zugreifen.
+	 * Verwendet in toString Mehtode
 	 */
 	friend class LinList;
 

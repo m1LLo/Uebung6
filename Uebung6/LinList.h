@@ -99,8 +99,7 @@ public:
 
 	string toString() const;
 
-
-	//friend ostream& operator<<(ostream&, const LinList&);
+	friend ostream& operator<<(ostream& o, const LinList&);
 
 private:
 
