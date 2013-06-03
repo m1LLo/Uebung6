@@ -310,3 +310,9 @@ ostream& operator<<(ostream& o, const LinList& liste)
 {
 	return o << liste.toString();
 }
+
+istream& operator>>(istream& in, LinList& list)
+{
+	list.push_back(in);
+	return in;
+}

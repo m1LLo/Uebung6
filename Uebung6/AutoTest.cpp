@@ -10,7 +10,10 @@
 
 AutoTest::AutoTest()
 {
+	LinList liste1;
+	liste1.push_back("alpha");
 
+	cout << liste1;
 }
 
 AutoTest::~AutoTest()

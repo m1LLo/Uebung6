@@ -6,13 +6,15 @@ CFLAGS =  -g -std=c++0x -pedantic -Wall
 DELOBJ = *.o
 all: LinListTst
 
-LinListTst: LinListTst.cpp LinList.o ListElement.o TestDialog.o
+LinListTst: LinListTst.cpp LinList.o ListElement.o TestDialog.o AutoTest.o
 
 LinList.o: LinList.cpp LinList.h ListElement.h
 
 ListElement.o: ListElement.cpp ListElement.h
 
 TestDialog.o: TestDialog.cpp TestDialog.h
+
+AutoTest.o: AutoTest.cpp AutoTest.h
 
 -include ../make-rules
 

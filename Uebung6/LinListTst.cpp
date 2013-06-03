@@ -9,14 +9,33 @@
 #include <iostream>
 #include "LinList.h"
 #include "TestDialog.h"
+#include "AutoTest.h"
 using namespace std;
-
-
 
 int main()
 {
-	TestDialog dialog;
-	dialog.hauptMenueAusgeben();
+	int benutzerEingabe;
+	cin >> benutzerEingabe;
+
+	switch (benutzerEingabe)
+	{
+	case AUTO_TEST:
+	{
+		AutoTest autoTest;
+		break;
+	}
+	case MANUELLER_TEST:
+	{
+		TestDialog dialog;
+		dialog.hauptMenueAusgeben();
+		break;
+	}
+	default:
+	{
+		cout << "FALSCHE EINGABE" << endl;
+	}
+	}
+
 	//Erstellt Objekt
 	//LinList liste1;
 

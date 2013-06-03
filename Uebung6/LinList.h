@@ -97,9 +97,21 @@ public:
 	 */
 	ListElement* findeListenElement(int stelle);
 
+	/**
+	 * Gibt die Liste als String aus.
+	 *
+	 * @return			String der Listenelemente
+	 */
 	string toString() const;
 
-	friend ostream& operator<<(ostream& o, const LinList&);
+	/**
+	 *
+	 * @param o
+	 * @param liste
+	 * @return
+	 */
+	friend ostream& operator<<(ostream& o, const LinList& liste);
+	friend istream& operator>>(istream& in, LinList& list);
 
 private:
 
