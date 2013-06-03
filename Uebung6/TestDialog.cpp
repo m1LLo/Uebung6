@@ -40,17 +40,19 @@ void TestDialog::hauptMenueAusgeben()
 
 		case ElementAnStelleEinfuegen:
 		{
-			doppeltVerketteteListe.insert(2,elementInhaltEinlesen());
+			doppeltVerketteteListe.insert(stelleEinlesen(),elementInhaltEinlesen());
 			break;
 		}
 
 		case LetztesElementLoeschen:
 		{
+			doppeltVerketteteListe.pop_back();
 			break;
 		}
 
 		case ErstesElementLoeschen:
 		{
+			doppeltVerketteteListe.pop_front();
 			break;
 		}
 
@@ -61,6 +63,7 @@ void TestDialog::hauptMenueAusgeben()
 
 		case KompletteListeLoeschen:
 		{
+			doppeltVerketteteListe.clean();
 			break;
 		}
 		case ListeAnzeigen:
@@ -111,4 +114,11 @@ InhaltTyp TestDialog::elementInhaltEinlesen()
 	cin >> elementInhalt;
 
 	return elementInhalt;
+}
+
+int TestDialog::stelleEinlesen()
+{
+	int stelle = 0;
+	cin >> stelle;
+	return stelle;
 }

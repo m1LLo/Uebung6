@@ -11,6 +11,8 @@
 #include "LinList.h"
 
 const int ERSTES_ELEMENT = 1;
+const char* STELLE_NICHT_VORHANDEN =
+		"Die Angegebene Stelle ist nicht vorhanden!";
 
 LinList::LinList()
 {
@@ -102,74 +104,66 @@ void LinList::push_first(InhaltTyp t)
 
 void LinList::insert(int stelle, InhaltTyp t)
 {
-	if (this->size == 0)
+	if (stelle > (this->size))
+	{
+		//throw STELLE_NICHT_VORHANDEN;
+	}
+
+	if ((this->size) == 0)
 	{
 		push_first(t);
 	}
 
+	if (stelle == 1)
+	{
+		//Vorne anhaengen
+		push_front(t);
+	}
+
 	else
 	{
-		//HIER SOLLTE EIGENTLICH ERSTES_ELEMENT STEHEN ABER DAS MOCHTE DER
-		//COMPILER NICHT
-		if (stelle > 1)
-		{
-			//NICHT SICHER OB NICHT BESSER FEHLERMELDUNG AUSWERFEN WEIL ANZAHL
-			//UEBERSCHRITTEN WURDE
-			if (stelle == ((this->size) + 1))
-			{
-				//hinten anhaengen
-				push_back(t);
-			}
 
-			else
-			{
-				ListElement *neuesElement;
-				ListElement *nachFolgeElement;
+		ListElement *neuesElement;
+		ListElement *nachFolgeElement;
 
-				//Ermittelt die Adresse des Elements vor dem eingefuegt werden
-				//soll
-				nachFolgeElement = findeListenElement(stelle);
+		//Ermittelt die Adresse des Elements vor dem eingefuegt werden
+		//soll
+		nachFolgeElement = findeListenElement(stelle);
 
-				//Erstellt das neue Element mit Inhalt, Pointer vom Vorgaenger
-				//des vom Element vor dem eingefuegt werden soll und dem Element
-				//selbt.
-				neuesElement = new ListElement(t, nachFolgeElement->previous,
-						nachFolgeElement);
+		//Erstellt das neue Element mit Inhalt, Pointer vom Vorgaenger
+		//des vom Element vor dem eingefuegt werden soll und dem Element
+		//selbt.
+		neuesElement = new ListElement(t, nachFolgeElement->previous,
+				nachFolgeElement);
 
-				//Veraendern der Pointer der Vorhaenger und Nachfolger des neuen
-				//Elements
-				nachFolgeElement->previous = neuesElement;
-				(neuesElement->previous)->next = neuesElement;
+		//Veraendern der Pointer der Vorhaenger und Nachfolger des neuen
+		//Elements
+		nachFolgeElement->previous = neuesElement;
+		(neuesElement->previous)->next = neuesElement;
 
-				++(this->size);
-			}
-		}
-
-		else
-		{
-			//Vorne anhaengen
-			push_front(t);
-		}
-
+		++(this->size);
 	}
 }
 
 void LinList::pop_back()
 {
 	ListElement *vorletztesElement;
-	vorletztesElement = this->last->previous;
+	vorletztesElement = (this->last)->previous;
 
 	//Setzt den NextPointer des Vorletzen Elements auf NULL
-	(this->last)->previous->next = 0;
+	vorletztesElement->next = 0;
 
-	delete this->last;
+	delete (this->last);
+
+	this->last = vorletztesElement;
+	--(this->size);
 
 }
 
 void LinList::pop_front()
 {
 	ListElement *pointerAufZweitesElement;
-	pointerAufZweitesElement= (this->first)->next;
+	pointerAufZweitesElement = (this->first)->next;
 
 	delete (this->first);
 
@@ -178,17 +172,22 @@ void LinList::pop_front()
 
 	//Rueckpointer des neuen FirstElements auf NULL setzen.
 	(this->first)->previous = 0;
+
+	--(this->size);
 }
 
 void LinList::clean()
 {
-	ListElement *aktuelleAusgewaehltesElement;
-	aktuelleAusgewaehltesElement = this->first;
-
-	while (aktuelleAusgewaehltesElement != 0)
+	//Nicht die Schnellste Variante zum Loeschen aber die schnellste zu
+	//Programmieren
+	for (int i = 1; i < (this->size); ++i)
 	{
-
+		pop_back();
 	}
+
+	delete this->first;
+	delete this->last;
+	this->size = 0;
 }
 
 ListElement* LinList::findeListenElement(int stelle)
@@ -200,7 +199,7 @@ ListElement* LinList::findeListenElement(int stelle)
 	//Wenn Stelle in Linker haelfte liegt von links kommen also von first.
 	if (stelle <= (this->size) / 2)
 	{
-		//Pointer zeigt auf das erste Element
+//Pointer zeigt auf das erste Element
 		ListElement *pointerAufMomentanesElement;
 		pointerAufMomentanesElement = this->first;
 
@@ -230,13 +229,13 @@ string LinList::toString() const
 	ListElement *aktuellerPointer;
 	aktuellerPointer = this->first;
 
+	o << "--------LINIEARE LISTE--------" << endl;
 	for (int i = 1; i <= (this->size); ++i)
 	{
 		o << i << ". Element" << "\n";
 		o << aktuellerPointer->inhalt << "\n" << "\n";
 		aktuellerPointer = aktuellerPointer->next;
 	}
-
 
 	return o.str();
 }

@@ -24,6 +24,8 @@ public:
 	//Klassenkonstannte für Erstes Element
 	static const int ERSTES_ELEMENT;
 
+	static const char* STELLE_NICHT_VORHANDEN;
+
 	/**
 	 * Standard Konstruktor.
 	 */

@@ -18,13 +18,13 @@ int main()
 	TestDialog dialog;
 	dialog.hauptMenueAusgeben();
 	//Erstellt Objekt
-	LinList liste1;
+	//LinList liste1;
 
 	//Fuegt Element an Ende an mit Inhalt "alpha"
-	liste1.push_back("alpha");
+	//liste1.push_back("alpha");
 
 	//Fuegt Element an Ende an mit Inhalt "beta"
-	liste1.push_back("beta");
+	//liste1.push_back("beta");
 	//cout << liste1 << endl;
 }
 
