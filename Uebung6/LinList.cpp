@@ -312,28 +312,29 @@ ostream& operator<<(ostream& o, const LinList& liste)
 	return o << liste.toString();
 }
 
-LinList::LinList(const LinList& zuKopierendeListe)
-{
-	if(zuKopierendeListe.size == 0)
-	{
-		throw LISTE_IST_LEER;
-	}
-
-	LinList neueListe;
-	neueListe.size = zuKopierendeListe.size;
-
-	ListElement *erstesElement;
-	ListElement *erstelltesElement;
-
-	erstesElement = new ListElement(zuKopierendeListe.first->inhalt,0,0);
-	erstelltesElement = erstesElement;
-
-	for (int i = 1; i <= zuKopierendeListe.size; ++i)
-	{
-		erstelltesElement = new (zu)
-	}
-
-}
+//Funktioniert nicht und ist nicht fertig
+//LinList::LinList(const LinList& zuKopierendeListe)
+//{
+//	if(zuKopierendeListe.size == 0)
+//	{
+//		throw LISTE_IST_LEER;
+//	}
+//
+//	LinList neueListe;
+//	neueListe.size = zuKopierendeListe.size;
+//
+//	ListElement *erstesElement;
+//	ListElement *erstelltesElement;
+//
+//	erstesElement = new ListElement(zuKopierendeListe.first->inhalt,0,0);
+//	erstelltesElement = erstesElement;
+//
+//	for (int i = 1; i <= zuKopierendeListe.size; ++i)
+//	{
+//		erstelltesElement = new ListElement(zuKopierendeListe ,erstelltesElement)
+//	}
+//
+//}
 
 istream& operator>>(istream& in, LinList& list)
 {
