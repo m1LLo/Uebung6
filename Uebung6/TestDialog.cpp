@@ -17,71 +17,79 @@ void TestDialog::hauptMenueAusgeben()
 
 	do
 	{
-		//Ausgabe Benutzerfuehrung
-		hauptMenueGuiAusgeben();
+		try
+		{
+			//Ausgabe Benutzerfuehrung
+			hauptMenueGuiAusgeben();
 
-		//Benutzereingabe
-		cin >> benutzerAuswahl;
+			//Benutzereingabe
+			cin >> benutzerAuswahl;
 
-		switch (benutzerAuswahl)
-		{
+			switch (benutzerAuswahl)
+			{
 
-		case ElementVornAnhaengen:
-		{
-			doppeltVerketteteListe.push_front(elementInhaltEinlesen());
-			break;
-		}
+			case ElementVornAnhaengen:
+			{
+				doppeltVerketteteListe.push_front(elementInhaltEinlesen());
+				break;
+			}
 
-		case ElementHintenAnhaengen:
-		{
-			doppeltVerketteteListe.push_back(elementInhaltEinlesen());
-			break;
-		}
+			case ElementHintenAnhaengen:
+			{
+				doppeltVerketteteListe.push_back(elementInhaltEinlesen());
+				break;
+			}
 
-		case ElementAnStelleEinfuegen:
-		{
-			doppeltVerketteteListe.insert(stelleEinlesen(),elementInhaltEinlesen());
-			break;
-		}
+			case ElementAnStelleEinfuegen:
+			{
+				doppeltVerketteteListe.insert(stelleEinlesen(),
+						elementInhaltEinlesen());
+				break;
+			}
 
-		case LetztesElementLoeschen:
-		{
-			doppeltVerketteteListe.pop_back();
-			break;
-		}
+			case LetztesElementLoeschen:
+			{
+				doppeltVerketteteListe.pop_back();
+				break;
+			}
 
-		case ErstesElementLoeschen:
-		{
-			doppeltVerketteteListe.pop_front();
-			break;
-		}
+			case ErstesElementLoeschen:
+			{
+				doppeltVerketteteListe.pop_front();
+				break;
+			}
 
-		case ElementAnStelleLoeschen:
-		{
-			break;
-		}
+			case ElementAnStelleLoeschen:
+			{
+				doppeltVerketteteListe.erase(stelleEinlesen());
+				break;
+			}
 
-		case KompletteListeLoeschen:
-		{
-			doppeltVerketteteListe.clean();
-			break;
-		}
-		case ListeAnzeigen:
-		{
-			cout << doppeltVerketteteListe.toString();
-			break;
-		}
-		case ProgrammBeenden:
-		{
-			benutzerAuswahl = 0;
-			break;
-		}
+			case KompletteListeLoeschen:
+			{
+				doppeltVerketteteListe.clean();
+				break;
+			}
+			case ListeAnzeigen:
+			{
+				cout << doppeltVerketteteListe.toString();
+				break;
+			}
+			case ProgrammBeenden:
+			{
+				benutzerAuswahl = 0;
+				break;
+			}
 
-		default:
+			default:
+			{
+				cout << "Falsche Eingabe" << endl;
+				break;
+			}
+			}
+		} catch (const char* e)
 		{
-			cout << "Falsche Eingabe" << endl;
-			break;
-		}
+			cout << endl << e << endl;
 		}
 	} while (benutzerAuswahl != 0);
 
@@ -89,7 +97,7 @@ void TestDialog::hauptMenueAusgeben()
 
 void TestDialog::hauptMenueGuiAusgeben()
 {
-	cout << "----------HAUPTMENUE----------" << endl;
+	cout << endl << "----------HAUPTMENUE----------" << endl;
 	cout << "ERSTELLEN:" << endl;
 	cout << "Element vorne anhaengen:        1" << endl;
 	cout << "Element hinten anhaengen:       2" << endl;
@@ -104,7 +112,9 @@ void TestDialog::hauptMenueGuiAusgeben()
 	cout << "ANZEIGEN:" << endl;
 	cout << "Liste Anzeigen:                 8" << endl << endl;
 
-	cout << "PROGRAMM BEENDEN:               0" << endl;
+	cout << "PROGRAMM BEENDEN:               0" << endl << endl;
+
+	cout << "AUSWAHL: ";
 }
 
 InhaltTyp TestDialog::elementInhaltEinlesen()
@@ -119,6 +129,7 @@ InhaltTyp TestDialog::elementInhaltEinlesen()
 int TestDialog::stelleEinlesen()
 {
 	int stelle = 0;
+	cout << "Bitte geben Sie die Stelle ein: ";
 	cin >> stelle;
 	return stelle;
 }

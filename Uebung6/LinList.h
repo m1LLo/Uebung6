@@ -21,10 +21,10 @@ class LinList
 {
 public:
 
-	//Klassenkonstannte für Erstes Element
+	//Klassenkonstannte
 	static const int ERSTES_ELEMENT;
-
 	static const char* STELLE_NICHT_VORHANDEN;
+	static const char* LISTE_IST_LEER;
 
 	/**
 	 * Standard Konstruktor.
@@ -80,6 +80,13 @@ public:
 	 * Loescht alle Elemente der verketteten Liste
 	 */
 	void clean();
+
+	/**
+	 * Loescht einen Artikel an Stelle.
+	 *
+	 * @param stelle		Stelle an der geloescht werden soll.
+	 */
+	void erase(int stelle);
 
 	/**
 	 * Hilfe für einfuegen an Stelle und loeschen an Stelle.

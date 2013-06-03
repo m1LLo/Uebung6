@@ -10,9 +10,10 @@
 
 #include "LinList.h"
 
-const int ERSTES_ELEMENT = 1;
-const char* STELLE_NICHT_VORHANDEN =
+const int LinList::ERSTES_ELEMENT = 1;
+const char* LinList::STELLE_NICHT_VORHANDEN =
 		"Die Angegebene Stelle ist nicht vorhanden!";
+const char* LinList::LISTE_IST_LEER = "LEER";
 
 LinList::LinList()
 {
@@ -23,7 +24,8 @@ LinList::LinList()
 
 LinList::~LinList()
 {
-	//Komplette Liste Loeschen
+	//Loescht nacheinander jedes Element des Liste
+	clean();
 }
 
 //Fuegt Element hinten an.
@@ -106,7 +108,7 @@ void LinList::insert(int stelle, InhaltTyp t)
 {
 	if (stelle > (this->size))
 	{
-		//throw STELLE_NICHT_VORHANDEN;
+		throw STELLE_NICHT_VORHANDEN;
 	}
 
 	if ((this->size) == 0)
@@ -114,7 +116,7 @@ void LinList::insert(int stelle, InhaltTyp t)
 		push_first(t);
 	}
 
-	if (stelle == 1)
+	if (stelle == ERSTES_ELEMENT)
 	{
 		//Vorne anhaengen
 		push_front(t);
@@ -147,6 +149,11 @@ void LinList::insert(int stelle, InhaltTyp t)
 
 void LinList::pop_back()
 {
+	if (this->size == 0)
+	{
+		throw LISTE_IST_LEER;
+	}
+
 	ListElement *vorletztesElement;
 	vorletztesElement = (this->last)->previous;
 
@@ -162,6 +169,11 @@ void LinList::pop_back()
 
 void LinList::pop_front()
 {
+	if (this->size == 0)
+	{
+		throw LISTE_IST_LEER;
+	}
+
 	ListElement *pointerAufZweitesElement;
 	pointerAufZweitesElement = (this->first)->next;
 
@@ -174,6 +186,53 @@ void LinList::pop_front()
 	(this->first)->previous = 0;
 
 	--(this->size);
+}
+
+void LinList::erase(int stelle)
+{
+	if (this->size = 0)
+	{
+		throw LISTE_IST_LEER;
+	}
+
+	if (stelle == 0)
+	{
+		throw STELLE_NICHT_VORHANDEN;
+	}
+
+	if (stelle > (this->size))
+	{
+		throw STELLE_NICHT_VORHANDEN;
+	}
+
+	ListElement *zuLoeschendesElement;
+	ListElement *vorGaenger;
+	ListElement *nachFolger;
+
+	zuLoeschendesElement = findeListenElement(stelle);
+
+	if (zuLoeschendesElement == (this->last))
+	{
+		pop_back();
+	}
+
+	if (zuLoeschendesElement == (this->first))
+	{
+		pop_front();
+	}
+
+	else
+	{
+		vorGaenger = zuLoeschendesElement->previous;
+		nachFolger = zuLoeschendesElement->next;
+
+		vorGaenger->next = nachFolger;
+		nachFolger->previous = vorGaenger;
+
+		delete zuLoeschendesElement;
+
+		--(this->size);
+	}
 }
 
 void LinList::clean()
@@ -192,15 +251,14 @@ void LinList::clean()
 
 ListElement* LinList::findeListenElement(int stelle)
 {
-	ListElement *zuerstellendesElement;
+	//Pointer zeigt auf das erste Element
 	ListElement *pointerAufMomentanesElement;
 
 	//Kontrolle von welcher Seite man schneller an das Element kommt.
 	//Wenn Stelle in Linker haelfte liegt von links kommen also von first.
 	if (stelle <= (this->size) / 2)
 	{
-//Pointer zeigt auf das erste Element
-		ListElement *pointerAufMomentanesElement;
+
 		pointerAufMomentanesElement = this->first;
 
 		for (int i = 1; i < stelle; ++i)
@@ -214,7 +272,9 @@ ListElement* LinList::findeListenElement(int stelle)
 	else
 	{
 		pointerAufMomentanesElement = this->last;
-		for (int i = 1; i < stelle; ++i)
+
+		//Beim durchzaehlen muss bis ANZAHL-STELLE gezaehlt werden
+		for (int i = 1; i <= ((this->size) - stelle); ++i)
 		{
 			pointerAufMomentanesElement = pointerAufMomentanesElement->previous;
 		}
@@ -226,16 +286,22 @@ ListElement* LinList::findeListenElement(int stelle)
 string LinList::toString() const
 {
 	ostringstream o;
+
 	ListElement *aktuellerPointer;
 	aktuellerPointer = this->first;
 
-	o << "--------LINIEARE LISTE--------" << endl;
+	o << endl << "--------LINIEARE LISTE--------" << endl;
+	if (this->size == 0)
+	{
+		o << endl << "             LEER             " << endl << endl;
+	}
 	for (int i = 1; i <= (this->size); ++i)
 	{
 		o << i << ". Element" << "\n";
 		o << aktuellerPointer->inhalt << "\n" << "\n";
 		aktuellerPointer = aktuellerPointer->next;
 	}
+	o << "------------------------------" << endl;
 
 	return o.str();
 }
