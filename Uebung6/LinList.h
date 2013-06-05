@@ -7,9 +7,11 @@
 
 #ifndef LINLIST_H_
 #define LINLIST_H_
+
 #include "ListElement.h"
 #include <sstream>
 #include <iomanip>
+#include "Tools.h"
 
 /**
  * Doppelt-verkettete Lineare Liste.
@@ -106,6 +108,14 @@ public:
 	ListElement* findeListenElement(int stelle);
 
 	/**
+	 * Gibt die laenge des Inhalts zurück
+	 *
+	 * @param inhaltsElement		Zu messender Inhalt
+	 * @return		int				Laenge des Inhalts
+	 */
+	int inhaltsLaengeAusgeben(InhaltTyp inhaltsElement) const;
+
+	/**
 	 * Gibt die Liste als String aus.
 	 *
 	 * @return			String der Listenelemente
@@ -120,6 +130,8 @@ public:
 	 */
 	friend ostream& operator<<(ostream& o, const LinList& liste);
 	friend istream& operator>>(istream& in, LinList& list);
+
+	friend class Tools;
 
 private:
 

@@ -317,26 +317,44 @@ ListElement* LinList::findeListenElement(int stelle)
 	return pointerAufMomentanesElement;
 }
 
+int LinList::inhaltsLaengeAusgeben(InhaltTyp inhaltsElement) const
+{
+	int stringLaenge = 0;
+
+	stringLaenge = inhaltsElement.length();
+
+	return stringLaenge;
+}
+
 string LinList::toString() const
 {
 	ostringstream o;
-	int anzahlElemente = this->size;
-
 	ListElement *aktuellerPointer;
+
+	int anzahlElemente = this->size;
 	aktuellerPointer = this->first;
 
+	//Sonderfall falls die Liste leer ist
 	if (this->size == 0)
 	{
 		o << endl << "             LEER             " << endl;
 		return o.str();
 	}
 
+	//1. Reihe Ausenkannte
 	for (int i = 1; i <= anzahlElemente; ++i)
 	{
-		o << "   /==========\\";		//12 Striche
+		static ListElement *aktuell = this->first;
+		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+		o << Tools::ausenKantenZeichnen(tempInhaltsLaenge);
+
+		//gehe zu nŠchstem Element
+		aktuell = aktuell->next;
 	}
 	o << endl;
 
+	//2. Reihe Elementinhalt
 	for (int i = 1; i <= anzahlElemente; ++i)
 	{
 		o << "   |   " << aktuellerPointer->inhalt << "   |";	//3 Whitespaces
@@ -344,34 +362,52 @@ string LinList::toString() const
 	}
 	o << endl;
 
+	//3. Reihe Trennlinie
 	for (int i = 1; i <= anzahlElemente; ++i)
 	{
-		o << "   |==========|";
+		static ListElement *aktuell = this->first;
+		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+		o << Tools::trennLinieZeichnen(tempInhaltsLaenge);
+
+		aktuell = aktuell->next;
+	}
+	o << endl;
+
+	//4. Reihe PREVIOUS
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		static ListElement *aktuell = this->first;
+		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+		o << Tools::previousZeichnen(tempInhaltsLaenge);
+
+		aktuell = aktuell->next;
+	}
+	o << endl;
+
+	//5. Reihe Trennzeichen
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << Tools::trennLinieZeichnen(4);
+	}
+	o << endl;
+
+	//6. Reihe NEXT
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		static ListElement *aktuell = this->first;
+		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+		o << Tools::nextZeichnen(tempInhaltsLaenge);
+
+		aktuell = aktuell->next;
 	}
 	o << endl;
 
 	for (int i = 1; i <= anzahlElemente; ++i)
 	{
-		o << "<==| PREVIOUS |";
-	}
-	o << endl;
-
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		o << "   |==========|";
-	}
-	o << endl;
-
-	o << "   ";
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		o << "|   NEXT   |==>";
-	}
-	o << endl;
-
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		o << "   \\==========/";		//12 Striche
+		o << Tools::ausenKantenZeichnen(4);
 	}
 	o << endl << endl;
 

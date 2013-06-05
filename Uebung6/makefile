@@ -5,11 +5,11 @@
 CFLAGS =  -g -std=c++0x -pedantic -Wall
 DELOBJ = *.o
 APPLICATION = LinListTst
+OBJEKTS = LinList.o ListElement.o TestDialog.o AutoTest.o MenuDialog.o Tools.o
 
 all: LinListTst
 
-LinListTst: LinListTst.cpp LinList.o ListElement.o TestDialog.o AutoTest.o\
-			MenuDialog.o Tools.o
+LinListTst: LinListTst.cpp $(OBJEKTS)
 
 LinList.o: LinList.cpp LinList.h ListElement.h
 

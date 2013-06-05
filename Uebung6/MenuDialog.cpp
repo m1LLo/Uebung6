@@ -18,9 +18,9 @@ MenuDialog::MenuDialog()
 	cout << "Manueller Test:     2" << endl;
 	cout << "Beenden:            0" << endl << endl;
 
-	int benutzerEingabe = 1;
+	int benutzerEingabe;
 	cout << "Auswahl: ";
-	//cin >> benutzerEingabe;
+	cin >> benutzerEingabe;
 
 	switch (benutzerEingabe)
 	{
