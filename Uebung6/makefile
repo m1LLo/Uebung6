@@ -4,9 +4,12 @@
 
 CFLAGS =  -g -std=c++0x -pedantic -Wall
 DELOBJ = *.o
+APPLICATION = LinListTst
+
 all: LinListTst
 
-LinListTst: LinListTst.cpp LinList.o ListElement.o TestDialog.o AutoTest.o MenuDialog.o
+LinListTst: LinListTst.cpp LinList.o ListElement.o TestDialog.o AutoTest.o\
+			MenuDialog.o Tools.o
 
 LinList.o: LinList.cpp LinList.h ListElement.h
 
@@ -18,6 +21,8 @@ AutoTest.o: AutoTest.cpp AutoTest.h
 
 MenuDialog.o: MenuDialog.cpp MenuDialog.h
 
+Tools.o: Tools.cpp Tools.h
+
 -include ../make-rules
 
 #LOESCHT alte Objekte
@@ -25,4 +30,5 @@ clean:
 	@echo "Folgende Daten werden geloescht"
 	@echo $(DELOBJ)
 	rm  $(DELOBJ)
+	rm $(APPLICATION)
 	

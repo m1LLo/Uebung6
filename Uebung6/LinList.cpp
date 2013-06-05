@@ -284,11 +284,10 @@ ListElement* LinList::findeListenElement(int stelle)
 string LinList::toString() const
 {
 	ostringstream o;
+	int anzahlElemente = this->size;
 
 	ListElement *aktuellerPointer;
 	aktuellerPointer = this->first;
-
-	o << endl << "--------LINIEARE LISTE--------" << endl;
 
 	if (this->size == 0)
 	{
@@ -296,14 +295,62 @@ string LinList::toString() const
 		return o.str();
 	}
 
-	o << endl << "START<-->";
-	for (int i = 1; i <= (this->size); ++i)
+	for (int i = 1; i <= anzahlElemente; ++i)
 	{
-		o << aktuellerPointer->inhalt << "<-->";
+		o << "   ============";		//12 Striche
+	}
+	o << endl;
+
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << "   |   " << aktuellerPointer->inhalt << "   |";
+		o << "   ";								//3 Whitespaces
 		aktuellerPointer = aktuellerPointer->next;
 	}
+	o << endl;
 
-	o << "ENDE" << endl;
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << "   |==========|";
+		o << " ";
+	}
+	o << endl;
+
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << "   |";
+		for (int i = 1; i <= 10; ++i)
+		{
+			o << " ";
+		}
+		o << "|" << "   ";
+	}
+	o << endl;
+
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << "<===PREVIOUS |";
+	}
+	o << endl;
+
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << " |";
+		for (int i = 1; i <= 10; ++i)
+		{
+			o << " ";
+		}
+		o << "|"<<"   ";
+	}
+	o << endl;
+
+	for (int i = 1; i <= anzahlElemente; ++i)
+	{
+		o << " |==========|";
+		o << "   ";
+	}
+	o << endl;
+
 	return o.str();
 }
 

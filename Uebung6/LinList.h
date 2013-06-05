@@ -9,6 +9,7 @@
 #define LINLIST_H_
 #include "ListElement.h"
 #include <sstream>
+#include <iomanip>
 
 /**
  * Doppelt-verkettete Lineare Liste.
