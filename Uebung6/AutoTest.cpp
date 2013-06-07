@@ -10,17 +10,19 @@
 
 AutoTest::AutoTest()
 {
-	cout << endl << "ERSTELLEN:" << endl;
+	cout << endl << "AUTOTEST:" << endl;
 
-	cout << "Erstellen einer Liste: \t \t CHECK" << endl;
 	LinList liste1;
+	cout << "Erstellen einer Liste: \t \t CHECK" << endl;
 
-	cout << "'alpha' Hinten anfuegen: \t CHECK" << endl;
 	try
 	{
 		liste1.push_back("alpha");
-	} catch (const char* e)
+
+	}
+	catch (const char* e)
 	{
+		cout << "FEHLER!" << endl;
 		cout << e << endl;
 	}
 
@@ -47,13 +49,13 @@ AutoTest::AutoTest()
 	cout << liste1;
 
 	cout << endl << "Erstellen von 5 Elementen" << endl;
-	liste1.push_back("Eins");
+	//liste1.push_back("Eins");
 	liste1.push_back("Zwei");
 	liste1.push_back("Drei");
 	liste1.push_back("Vier");
 	liste1.push_back("Fuenf");
 
-	cout << liste1;
+	//cout << liste1;
 
 	cout << endl << "Loeschen am Anfang der Liste: \t CHECK" << endl;
 	liste1.pop_front();

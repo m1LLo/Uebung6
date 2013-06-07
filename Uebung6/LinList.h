@@ -123,6 +123,7 @@ public:
 	string toString() const;
 
 	/**
+	 * << Operator ueberladen.
 	 *
 	 * @param o
 	 * @param liste
@@ -130,7 +131,13 @@ public:
 	 */
 	friend ostream& operator<<(ostream& o, const LinList& liste);
 	friend istream& operator>>(istream& in, LinList& list);
+	friend LinList& operator+(LinList& ersteListe, LinList& anZuHaengendeListe);
+	ListElement& operator[](int stelle);
+	LinList& operator+=(LinList& anZuHaengendeListe);
+	//bool operator==(const ListElement& ersteListe,
+	//		const ListElement zweiteListe);
 
+	friend class ListElement;
 	friend class Tools;
 
 private:

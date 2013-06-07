@@ -15,6 +15,78 @@ const char* Tools::TRENN_ZEICHEN = "-";
 const char* Tools::PFEIL_FORM_RECHTS = "-->";
 const char* Tools::PFEIL_FORM_LINKS = "<--";
 
+string Tools::listeAlsGuiAusgeben(int inhaltsBreite)
+{
+	ostringstream o;
+	/*
+	 //1. Reihe Ausenkannte
+	 for (int i = 1; i <= anzahlElemente; ++i)
+	 {
+	 static ListElement *aktuell = this->first;
+	 int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+	 o << Tools::ausenKantenZeichnen(tempInhaltsLaenge);
+
+	 //gehe zu nŠchstem Element
+	 aktuell = aktuell->next;
+	 }
+	 o << endl;
+	 */
+
+	/*
+	 //3. Reihe Trennlinie
+	 for (int i = 1; i <= anzahlElemente; ++i)
+	 {
+	 static ListElement *aktuell = this->first;
+	 int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+	 o << Tools::trennLinieZeichnen(tempInhaltsLaenge);
+
+	 aktuell = aktuell->next;
+	 }
+	 o << endl;
+
+	 //4. Reihe PREVIOUS
+	 for (int i = 1; i <= anzahlElemente; ++i)
+	 {
+	 static ListElement *aktuell = this->first;
+	 int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+	 o << Tools::previousZeichnen(tempInhaltsLaenge);
+
+	 aktuell = aktuell->next;
+	 }
+	 o << endl;
+
+	 //5. Reihe Trennzeichen
+	 for (int i = 1; i <= anzahlElemente; ++i)
+	 {
+	 o << Tools::trennLinieZeichnen(4);
+	 }
+	 o << endl;
+
+	 //6. Reihe NEXT
+	 for (int i = 1; i <= anzahlElemente; ++i)
+	 {
+	 static ListElement *aktuell = this->first;
+	 int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
+
+	 o << Tools::nextZeichnen(tempInhaltsLaenge);
+
+	 aktuell = aktuell->next;
+	 }
+	 o << endl;
+
+	 for (int i = 1; i <= anzahlElemente; ++i)
+	 {
+	 o << Tools::ausenKantenZeichnen(4);
+	 }
+	 o << endl << endl;
+	 */
+
+	return o.str();
+}
+
 string Tools::trennLinieZeichnen(int inhaltsBreite)
 {
 	if (inhaltsBreite <= 8)

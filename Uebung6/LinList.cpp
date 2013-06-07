@@ -341,111 +341,114 @@ string LinList::toString() const
 		return o.str();
 	}
 
-	//1. Reihe Ausenkannte
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		static ListElement *aktuell = this->first;
-		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
-
-		o << Tools::ausenKantenZeichnen(tempInhaltsLaenge);
-
-		//gehe zu nŠchstem Element
-		aktuell = aktuell->next;
-	}
-	o << endl;
-
 	//2. Reihe Elementinhalt
 	for (int i = 1; i <= anzahlElemente; ++i)
 	{
-		o << "   |   " << aktuellerPointer->inhalt << "   |";	//3 Whitespaces
+		o << aktuellerPointer->inhalt;
+		o << "<-->";
 		aktuellerPointer = aktuellerPointer->next;
 	}
 	o << endl;
 
-	//3. Reihe Trennlinie
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		static ListElement *aktuell = this->first;
-		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
-
-		o << Tools::trennLinieZeichnen(tempInhaltsLaenge);
-
-		aktuell = aktuell->next;
-	}
-	o << endl;
-
-	//4. Reihe PREVIOUS
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		static ListElement *aktuell = this->first;
-		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
-
-		o << Tools::previousZeichnen(tempInhaltsLaenge);
-
-		aktuell = aktuell->next;
-	}
-	o << endl;
-
-	//5. Reihe Trennzeichen
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		o << Tools::trennLinieZeichnen(4);
-	}
-	o << endl;
-
-	//6. Reihe NEXT
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		static ListElement *aktuell = this->first;
-		int tempInhaltsLaenge = inhaltsLaengeAusgeben(aktuell->inhalt);
-
-		o << Tools::nextZeichnen(tempInhaltsLaenge);
-
-		aktuell = aktuell->next;
-	}
-	o << endl;
-
-	for (int i = 1; i <= anzahlElemente; ++i)
-	{
-		o << Tools::ausenKantenZeichnen(4);
-	}
-	o << endl << endl;
-
 	return o.str();
 }
+
+//Funktioniert nicht und ist nicht fertig
+/*
+ LinList::LinList(const LinList& zuKopierendeListe)
+ {
+ if(zuKopierendeListe.size == 0)
+ {
+ throw LISTE_IST_LEER;
+ }
+
+ LinList neueListe;
+ neueListe.size = zuKopierendeListe.size;
+
+ ListElement *erstesElement;
+ ListElement *erstelltesElement;
+
+ erstesElement = new ListElement(zuKopierendeListe.first->inhalt,0,0);
+ erstelltesElement = erstesElement;
+
+ for (int i = 1; i <= zuKopierendeListe.size; ++i)
+ {
+ erstelltesElement = new ListElement(zuKopierendeListe ,erstelltesElement)
+ }
+ }
+ */
 
 ostream& operator<<(ostream& o, const LinList& liste)
 {
 	return o << liste.toString();
 }
 
-//Funktioniert nicht und ist nicht fertig
-//LinList::LinList(const LinList& zuKopierendeListe)
-//{
-//	if(zuKopierendeListe.size == 0)
-//	{
-//		throw LISTE_IST_LEER;
-//	}
-//
-//	LinList neueListe;
-//	neueListe.size = zuKopierendeListe.size;
-//
-//	ListElement *erstesElement;
-//	ListElement *erstelltesElement;
-//
-//	erstesElement = new ListElement(zuKopierendeListe.first->inhalt,0,0);
-//	erstelltesElement = erstesElement;
-//
-//	for (int i = 1; i <= zuKopierendeListe.size; ++i)
-//	{
-//		erstelltesElement = new ListElement(zuKopierendeListe ,erstelltesElement)
-//	}
-//
-//}
-
-istream& operator>>(istream& in, LinList& list)
+// schiebt ein Element hinten an die Liste
+// Form:  Inhalt >> Liste ;
+istream& operator>>(istream& in, LinList &list)
 {
+	string inhalt;
+	in >> inhalt;
+	list.push_back(inhalt);
 
 	return in;
 }
 
+// [] OPERATOR
+ListElement& LinList::operator[](int stelle)
+{
+	return *findeListenElement(stelle);
+}
+/*
+LinList& operator +(LinList& ersteListe,
+		LinList& anZuHaengendeListe)
+{
+	ListElement *letztesElementDerErsteListe;
+	ListElement *erstesElementAnZuHaengendeListe;
+
+	letztesElementDerErsteListe = (ersteListe.last);
+	erstesElementAnZuHaengendeListe = (anZuHaengendeListe.first);
+
+	//pointer Umbiegen!
+
+	letztesElementDerErsteListe->next = erstesElementAnZuHaengendeListe;
+	erstesElementAnZuHaengendeListe->previous = letztesElementDerErsteListe;
+
+	ersteListe.last = anZuHaengendeListe.last;
+
+	anZuHaengendeListe.first = 0;
+	anZuHaengendeListe.last = 0;
+
+	return ersteListe;
+}
+*/
+
+/*LinList& LinList::operator +=(LinList& anZuHaengendeListe)
+{
+	LinList zuSammenGefuegteListe;
+	ListElement *letztesElementDerErsteListe;
+	ListElement *erstesElementAnZuHaengendeListe;
+
+	letztesElementDerErsteListe = (ersteListe.last);
+	erstesElementAnZuHaengendeListe = (anZuHaengendeListe.first);
+
+	//pointer Umbiegen!
+
+	letztesElementDerErsteListe->next = erstesElementAnZuHaengendeListe;
+	erstesElementAnZuHaengendeListe->previous = letztesElementDerErsteListe;
+
+	return zuSammenGefuegteListe;
+}
+*/
+
+/*
+bool LinList::operator ==(const LinList& ersteListe,
+		const LinList zweiteListe)
+{
+	if (ersteListe.size == zweiteListe.size)
+	{
+		return false;
+	}
+	return true;
+}
+*/

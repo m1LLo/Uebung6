@@ -30,6 +30,14 @@ public:
 	static const char* PFEIL_FORM_LINKS;
 
 	/**
+	 * Gibt statt das einfache toString die Elemente in einem Interface aus!
+	 * Dabei wird Reihenweise vorgegangen.
+	 *NOCH NICHT IMPLIMENTIERT!
+	 * @param inhaltsBreite		Die Breite des Elements
+	 * @return
+	 */
+	static string listeAlsGuiAusgeben(int inhaltsBreite);
+	/**
 	 * Gibt die Trennlinie aus für die Gui.
 	 * Trennlinie zwischen den Einzelnen Objektattributen.
 	 *

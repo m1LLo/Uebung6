@@ -83,6 +83,8 @@ void TestDialog::hauptMenueAusgeben()
 				cout << doppeltVerketteteListe.toString();
 				break;
 			}
+			case 14:
+				break;
 			case ProgrammBeenden:
 			{
 				benutzerAuswahl = 0;
