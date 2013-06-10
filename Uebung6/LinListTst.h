@@ -1,5 +1,5 @@
 /**
- * TODO
+ * Includes & Konstantendefinition fuer die Datei LinListTst.cpp
  *	
  * @file:		LinListTst.h
  * @date: 		03.06.2013
@@ -13,7 +13,5 @@ const int AUTO_TEST = 1;
 const int MANUELLER_TEST = 2;
 
 #include "MenuDialog.h"
-
-
 
 #endif /* LINLISTTST_H_ */

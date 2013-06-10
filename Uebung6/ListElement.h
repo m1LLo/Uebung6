@@ -1,5 +1,5 @@
 /**
- * 
+ * Klasse für
  * @file	ListElement.h
  * @author	folz
  * @date	20.05.2012

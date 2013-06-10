@@ -1,5 +1,6 @@
 /**
- * TODO
+ * Die Klasse Autotest testet die Klasse LinList und ihre Methoden.
+ * Auch die †berladenen Operatoren werden getestet.
  *	
  * @file:		AutoTest.cpp
  * @date: 		03.06.2013
@@ -49,13 +50,13 @@ AutoTest::AutoTest()
 	cout << liste1;
 
 	cout << endl << "Erstellen von 5 Elementen" << endl;
-	//liste1.push_back("Eins");
+	liste1.push_back("Eins");
 	liste1.push_back("Zwei");
 	liste1.push_back("Drei");
 	liste1.push_back("Vier");
 	liste1.push_back("Fuenf");
 
-	//cout << liste1;
+	cout << liste1;
 
 	cout << endl << "Loeschen am Anfang der Liste: \t CHECK" << endl;
 	liste1.pop_front();
@@ -69,6 +70,11 @@ AutoTest::AutoTest()
 
 	cout << endl << "Loeschen an Stelle 2: \t \t CHECK" << endl;
 	liste1.erase(2);
+
+	cout << liste1;
+
+	cout << endl << "Liste Leeren!" << endl;
+	liste1.clean();
 
 	cout << liste1;
 }

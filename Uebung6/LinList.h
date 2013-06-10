@@ -1,7 +1,10 @@
 /**
+ * Klasse für das Verwalten einer doppelt verketten Liste.
+ * Hat einen Zeiger auf erstes und letztes Element der Liste und beinhaltet die
+ * Anzahl der Angelegten Listenelemente
  * 
  * @file	LinList.h
- * @author	folz
+ * @author	Markus Leitz (3543994)
  * @date	20.05.2012
  */
 
@@ -121,6 +124,22 @@ public:
 	 * @return			String der Listenelemente
 	 */
 	string toString() const;
+
+	/**
+	 * Gibt die Liste als gestaltete GUI aus.
+	 * Ausgabe passt sich automatisch der Inhaltsgroesse an.
+	 * Es wird jede Zeile extra erstellt und dann Zeilenweise ausgeben.
+	 * Layout:	+----------+
+	 * 			|   TEST   |
+	 * 			|----------|
+	 * 		 <--| PREVIOUS |
+	 * 			|----------|
+	 * 			|   NEXT   |-->
+	 * 			+----------+
+	 *
+	 * @return string
+	 */
+	string toGui() const;
 
 	/**
 	 * << Operator ueberladen.

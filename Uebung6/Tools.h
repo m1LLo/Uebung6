@@ -37,6 +37,7 @@ public:
 	 * @return
 	 */
 	static string listeAlsGuiAusgeben(int inhaltsBreite);
+
 	/**
 	 * Gibt die Trennlinie aus fŸr die Gui.
 	 * Trennlinie zwischen den Einzelnen Objektattributen.

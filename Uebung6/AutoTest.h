@@ -1,5 +1,7 @@
 /**
- * TODO
+ * Die Klasse Autotest hat die Aufgabe alle möglichen Sonderfälle und Eingaben
+ * der Klasse LinList zu Testen und im Fehlerfall eine Fehlermeldung an den
+ * Benutzer auszugeben.
  *	
  * @file:		AutoTest.h
  * @date: 		03.06.2013

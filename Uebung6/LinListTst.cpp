@@ -15,14 +15,5 @@ int main()
 
 	MenuDialog dialog;
 
-	//Erstellt Objekt
-	//LinList liste1;
-
-	//Fuegt Element an Ende an mit Inhalt "alpha"
-	//liste1.push_back("alpha");
-
-	//Fuegt Element an Ende an mit Inhalt "beta"
-	//liste1.push_back("beta");
-	//cout << liste1 << endl;
 }
 

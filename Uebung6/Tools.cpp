@@ -1,5 +1,13 @@
 /**
- * TODO
+ * Hilfsklasse zum erstellen einer GUI Ausgabe von LinList.
+ * Erstellt für jedes Element eine grafische ausgabe der Form:
+ * 			+----------+
+ *  		|   TEST   |
+ * 			|----------|
+ * 		 <--| PREVIOUS |
+ * 			|----------|
+ * 			|   NEXT   |-->
+ * 			+----------+
  *	
  * @file:		Tools.cpp
  * @date: 		05.06.2013
@@ -8,7 +16,7 @@
 
 #include "Tools.h"
 
-//Abstand des Inhalts zum Rand
+//Mindestabstand des Textes zum Rand
 const int Tools::ABSTAND_ZUM_RAND = 2;
 const char* Tools::ECK_ZEICHEN = "+";
 const char* Tools::TRENN_ZEICHEN = "-";
